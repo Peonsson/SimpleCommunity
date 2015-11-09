@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:outputLabel value="Register page"/>
+
+    <h:form>
+        <h:outputLabel>Username</h:outputLabel>
+        <h:inputText id="username" value="#{User.username}"></h:inputText>
+
+        <h:outputLabel>Password</h:outputLabel>
+        <h:inputSecret id="password" value="#{User.password}"></h:inputSecret>
+
+        <h:outputLabel>First name</h:outputLabel>
+        <h:inputText id="firstname" value="#{User.firstname}"></h:inputText>
+
+        <h:outputLabel>Last name</h:outputLabel>
+        <h:inputText id="lastname" value="#{User.lastname}"></h:inputText>
+
+        <h:outputLabel>Country</h:outputLabel>
+        <h:inputText id="country" value="#{User.country}"></h:inputText>
+
+        <h:outputLabel>City</h:outputLabel>
+        <h:inputText id="city" value="#{User.city}"></h:inputText>
+
+        <h:commandButton id="submit" action="#{User.register}" value="Submit"></h:commandButton>
+    </h:form>
+</f:view>
+</html>

@@ -19,15 +19,15 @@ public class PrivateMessage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int privateMessageId;
 
-    @Column(name = "Sender")
+//    @Column(name = "Sender")
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "Sender")
     @NotNull
     private User sender;
 
-    @Column(name = "Receiver")
+//    @Column(name = "Receiver")
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "Receiver")
     @NotNull
     private User receiver;
 

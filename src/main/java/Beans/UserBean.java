@@ -1,4 +1,6 @@
-package BusinessLogic;
+package Beans;
+
+import BusinessLogic.UserHandler;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -8,9 +10,9 @@ import javax.faces.bean.SessionScoped;
  * Created by robin on 9/11/15.
  */
 @ManagedBean(name="User")
-
 @SessionScoped
 public class UserBean {
+    private String email;
     private String username;
     private String password;
     private String firstname;
@@ -24,11 +26,19 @@ public class UserBean {
 
 
     public void register() {
-        boolean success = UserHandler.registerUser(username, password, firstname, lastname, country, city);
+        boolean success = UserHandler.registerUser(email, username, password, firstname, lastname, country, city);
 
         if (success) {
             System.out.println("success registering!");
         }
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {

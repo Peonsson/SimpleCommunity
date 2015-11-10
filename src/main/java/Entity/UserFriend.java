@@ -21,12 +21,12 @@ public class UserFriend {
 
     // This users friends (other users)
     @ManyToMany
-    @JoinTable(name = "Friends", joinColumns = @JoinColumn(name = "UserId"), inverseJoinColumns = @JoinColumn(name = "UserId"))
+    @JoinTable(name = "Friends", joinColumns = @JoinColumn(name = "UserId"), inverseJoinColumns = @JoinColumn(name = "FriendUserId"))
     private List<User> friends;
 
     // Other users who have this user as friend
     @ManyToMany
-    @JoinTable(name = "Friends", joinColumns = @JoinColumn(name = "UserId"), inverseJoinColumns = @JoinColumn(name = "UserId"))
+    @JoinTable(name = "FriendOf", joinColumns = @JoinColumn(name = "UserId"), inverseJoinColumns = @JoinColumn(name = "FriendUserId"))
     private List<User> friendOf;
 
     @Column(name = "Accepted")

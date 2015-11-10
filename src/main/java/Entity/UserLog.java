@@ -21,7 +21,7 @@ public class UserLog {
 
     @ManyToOne
     @JoinColumn(name = "UserId")
-    @Column(name = "User")
+//    @Column(name = "User")
     private User user;
 
     @Column(name = "Timestamp")

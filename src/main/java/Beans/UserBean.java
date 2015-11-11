@@ -13,9 +13,10 @@ import java.io.IOException;
 /**
  * Created by robin on 9/11/15.
  */
-@ManagedBean(name="User")
+@ManagedBean(name = "User")
 @RequestScoped
 public class UserBean {
+
     private String email;
     private String username;
     private String password;
@@ -28,27 +29,36 @@ public class UserBean {
         super();
     }
 
-
     public void register() {
         boolean registerSuccess = UserHandler.registerUser(email, username, password, firstname, lastname, country, city);
 
         if (registerSuccess) {
             try {
                 ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-                ec.redirect(ec.getRequestContextPath() + "/faces/login.xhtml");
-            }
-            catch (IOException e) {
+                ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+            } catch (IOException e) {
                 System.out.println("failed redirecting");
                 e.printStackTrace();
             }
-        }
-        else {
+        } else {
             // TODO: Assign variable if registration failed. (http://stackoverflow.com/questions/15452539/redirecting-form-jsf-managed-bean-and-showing-js-alert-based-on-condition-in-man)
         }
     }
 
     public void login() {
         boolean loginSuccess = UserHandler.loginUser(username, password);
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+
+        try {
+            if (loginSuccess) {
+                ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+            } else {
+                ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+            }
+        } catch (IOException e) {
+            System.out.println("failed redirecting");
+            e.printStackTrace();
+        }
     }
 
     public String getEmail() {

@@ -26,4 +26,21 @@ public class UserDB {
 
         return true;
     }
+
+    public static boolean loginUser(String username, String password) {
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
+//        EntityManager em = emf.createEntityManager();
+//
+//        try {
+//            em.getTransaction().begin();
+//            em.persist(user);
+//            em.getTransaction().commit();
+//        }
+//        catch (Exception e) {
+//            em.close();
+//            return false;
+//        }
+
+        return true;
+    }
 }

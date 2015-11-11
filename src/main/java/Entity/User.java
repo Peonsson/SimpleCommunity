@@ -139,7 +139,11 @@ public class User {
         this.city = city;
     }
 
-    public static boolean registerUser(User user) {
+    public static boolean register(User user) {
         return UserDB.registerUser(user);
+    }
+
+    public static boolean login(String username, String password) {
+        return UserDB.loginUser(username, password);
     }
 }

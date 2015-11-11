@@ -51,7 +51,7 @@ public class UserBean {
 
         try {
             if (loginSuccess) {
-                ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+                ec.redirect(ec.getRequestContextPath() + "/timeline.xhtml");
             } else {
                 ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
             }

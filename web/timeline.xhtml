@@ -6,10 +6,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
+    <ui:include src="menu.xhtml"></ui:include>
+    <h:form>
+        <h:inputText id="subject" value="#{Log.subject}"></h:inputText>
+        <h:inputText id="message" value="#{Log.message}"></h:inputText>
+        <h:commandButton value="Submit" action="#{Log.submit}"></h:commandButton>
+    </h:form>
 
-    <h:link value="Login" outcome="login"></h:link>
-    <h:outputLabel value=" | "></h:outputLabel>
-    <h:link value="Register" outcome="register"></h:link>
-    <br/>
+    <h:outputText value="timeline"></h:outputText>
+
 </f:view>
 </html>

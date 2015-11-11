@@ -1,5 +1,7 @@
 package Entity;
 
+import Database.LogDB;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -90,5 +92,9 @@ public class UserLog {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public static boolean submit(UserLog log) {
+        return LogDB.submit(log);
     }
 }

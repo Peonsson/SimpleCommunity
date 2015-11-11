@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Created by Peonsson and roppe546.
- *
+ * <p>
  * This class describes user entities in database.
  */
 
@@ -144,6 +144,15 @@ public class User {
     }
 
     public static boolean login(String username, String password) {
-        return UserDB.loginUser(username, password);
+        User user = UserDB.loginUser(username, password);
+
+        if (user != null) {
+            if (user.username.equals(username) && user.password.equals(password)) {
+                System.out.println("User: have successfully logged in!");
+                return true;
+            }
+        }
+        System.err.println("User: login failed.");
+        return false;
     }
 }

@@ -1,5 +1,7 @@
 package Entity;
 
+import Database.UserDB;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -19,11 +21,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
-    @Column(name = "Email")
+    @Column(name = "Email", unique = true)
     @NotNull
     private String email;
 
-    @Column(name = "Username")
+    @Column(name = "Username", unique = true)
     @NotNull
     @Min(value = 3, message = "Username must be at least 3 characters long.")
     @Max(value = 32, message = "Username cannot be longer than 32 characters.")
@@ -135,5 +137,9 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public static boolean registerUser(User user) {
+        return UserDB.registerUser(user);
     }
 }

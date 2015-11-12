@@ -94,7 +94,7 @@ public class UserLog {
         this.message = message;
     }
 
-    public static boolean submit(UserLog log) {
-        return LogDB.submit(log);
-    }
+//    public static boolean submit(UserLog log) {
+//        return LogDB.submit(log);
+//    }
 }

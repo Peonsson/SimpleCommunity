@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by Peonsson and roppe546.
@@ -53,6 +54,32 @@ public class User {
 
     @Column(name = "City")
     private String city;
+
+    // This users friends (other users)
+    @ManyToMany
+    @JoinTable(name = "Friends", joinColumns = @JoinColumn(name = "UserId"), inverseJoinColumns = @JoinColumn(name = "FriendUserId"))
+    private List<User> friends;
+
+    public List<User> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
+    }
+
+    public List<User> getFriendOf() {
+        return friendOf;
+    }
+
+    public void setFriendOf(List<User> friendOf) {
+        this.friendOf = friendOf;
+    }
+
+    // Other users who have this user as friend
+    @ManyToMany
+    @JoinTable(name = "FriendOf", joinColumns = @JoinColumn(name = "UserId"), inverseJoinColumns = @JoinColumn(name = "FriendUserId"))
+    private List<User> friendOf;
 
     public User() {
         super();
@@ -154,5 +181,27 @@ public class User {
         }
         System.err.println("User: login failed.");
         return false;
+    }
+
+    public static List<User> browse() {
+        return UserDB.browse();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
+
+    public static User getUser(int id) {
+        return UserDB.getUser(id);
     }
 }

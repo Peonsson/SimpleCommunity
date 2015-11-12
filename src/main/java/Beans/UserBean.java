@@ -1,6 +1,7 @@
 package Beans;
 
 import BusinessLogic.UserHandler;
+import Entity.User;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -9,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by robin on 9/11/15.
@@ -24,6 +26,19 @@ public class UserBean {
     private String lastname;
     private String country;
     private String city;
+    private List<User> browse;
+    private User user;
+    private int getUserId;
+
+
+    public List<User> getBrowse() {
+        System.out.println("UserBean: KIL");
+        return UserHandler.browse();
+    }
+
+    public void setBrowse(List<User> browse) {
+        this.browse = browse;
+    }
 
     public UserBean() {
         super();
@@ -115,5 +130,21 @@ public class UserBean {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public User getUser() {
+        return UserHandler.getUser(getUserId);
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getGetUserId() {
+        return getUserId;
+    }
+
+    public void setGetUserId(int getUserId) {
+        this.getUserId = getUserId;
     }
 }

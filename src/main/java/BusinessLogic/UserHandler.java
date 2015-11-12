@@ -6,6 +6,7 @@ import org.hibernate.annotations.SourceType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.List;
 
 /**
  * Created by robin on 9/11/15.
@@ -23,5 +24,13 @@ public class UserHandler {
         System.out.println("Usr handler: username = " + username + "\npassword = " + password);
 
         return User.login(username, password);
+    }
+
+    public static List<User> browse() {
+        return User.browse();
+    }
+
+    public static User getUser(int id) {
+        return User.getUser(id);
     }
 }

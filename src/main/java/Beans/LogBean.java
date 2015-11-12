@@ -18,9 +18,9 @@ public class LogBean {
         super();
     }
 
-    public submit() {
-        LogHandler.submit(subject, message);
-    }
+//    public submit() {
+//        LogHandler.submit(subject, message);
+//    }
 
     public String getSubject() {
         return subject;

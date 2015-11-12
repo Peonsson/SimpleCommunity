@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,6 +49,49 @@ public class UserDB {
         } catch (Exception e) {
             System.err.println(e.getMessage());
             return null;
+        } finally {
+            em.close();
+        }
+        return user;
+    }
+
+    public static List<User> browse() {
+        System.out.println("UserDB: GOT HERE");
+        List<User> users = new ArrayList<User>();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            Query query = em.createQuery("from User");
+            List list = query.getResultList();
+
+            for (int i = 0; i < list.size(); i++) {
+                users.add((User) list.get(i));
+            }
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return null;
+        } finally {
+            em.close();
+        }
+
+        System.out.println(users.toString());
+        return users;
+    }
+
+    public static User getUser(int id) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
+        EntityManager em = emf.createEntityManager();
+
+        User user = null;
+
+        try {
+            Query query = em.createQuery("from User where userId = :id");
+            query.setParameter("id", id);
+            user = (User) query.getSingleResult();
+        } catch(Exception e) {
+            System.err.println(e.getMessage());
         } finally {
             em.close();
         }

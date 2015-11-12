@@ -5,10 +5,24 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
 <f:view>
-    <h:dataTable value="#{User.userlist}">
-        <h:column></h:column>
+
+    <ui:include src="menu.xhtml"></ui:include>
+
+    <h:dataTable value="#{User.browse}" var="user">
+        <h:column>#{user.userId}</h:column>
+        <h:column>#{user.username}</h:column>
+        <h:column>#{user.firstname}</h:column>
+        <h:column>#{user.lastname}</h:column>
+        <h:column>#{user.country}</h:column>
+        <h:column>#{user.city}</h:column>
+        <h:column>
+            <h:commandButton value="View profile" action="#{User.getUser}">
+                <f:attribute name="id" value="#{user.userId}"></f:attribute>
+            </h:commandButton>
+        </h:column>
     </h:dataTable>
-    <h:outputLabel value="Hello, world"/>
+
 </f:view>
 </html>

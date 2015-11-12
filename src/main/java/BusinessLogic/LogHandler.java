@@ -8,8 +8,8 @@ import Entity.UserLog;
  */
 public class LogHandler {
 
-    public static boolean submit(String subject, String message) {
-
-        return UserLog.submit(new UserLog(subject, message));
-    }
+//    public static boolean submit(String subject, String message) {
+//
+//        return UserLog.submit(new UserLog(new User(), subject, message));
+//    }
 }

@@ -3,13 +3,14 @@ package Beans;
 import sun.rmi.log.LogHandler;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Created by Peonsson on 11/11/15.
  */
 @ManagedBean(name="Log")
+@SessionScoped
 public class LogBean {
-
 
     private String subject;
     private String message;

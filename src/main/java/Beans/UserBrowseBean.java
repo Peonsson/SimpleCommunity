@@ -10,6 +10,7 @@ import java.util.List;
  */
 @ManagedBean(name="UserBrowse")
 public class UserBrowseBean {
+
     private List<User> users;
 
     public UserBrowseBean() {
@@ -19,4 +20,5 @@ public class UserBrowseBean {
     public List<User> getUsers() {
         return User.browse();
     }
+
 }

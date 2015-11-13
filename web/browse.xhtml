@@ -19,9 +19,11 @@
         <h:column>#{user.country}</h:column>
         <h:column>#{user.city}</h:column>
         <h:column>
-            <p:button value="View profile" outcome="profile">
-                <f:param name="userId" value="#{user.userId}"/>
-            </p:button>
+            <h:form>
+                <p:commandButton value="View profile" action="#{UserProfile.getProfile}">
+                    <f:param name="userId" value="#{user.userId}"/>
+                </p:commandButton>
+            </h:form>
         </h:column>
     </h:dataTable>
 

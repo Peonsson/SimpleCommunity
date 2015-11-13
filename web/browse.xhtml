@@ -4,13 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 <f:view>
 
-    <!--<ui:include src="menu.xhtml"></ui:include>-->
+    <ui:include src="menu.xhtml"></ui:include>
 
-    <h:dataTable value="#{User.browse}" var="user">
+    <h:dataTable value="#{UserBrowse.users}" var="user">
         <h:column>#{user.userId}</h:column>
         <h:column>#{user.username}</h:column>
         <h:column>#{user.firstname}</h:column>
@@ -18,9 +19,9 @@
         <h:column>#{user.country}</h:column>
         <h:column>#{user.city}</h:column>
         <h:column>
-            <h:commandButton value="View profile" action="#{User.getUser}">
-                <f:attribute name="id" value="#{user.userId}"></f:attribute>
-            </h:commandButton>
+            <p:button value="View profile" outcome="profile">
+                <f:param name="userId" value="#{user.userId}"/>
+            </p:button>
         </h:column>
     </h:dataTable>
 

@@ -19,7 +19,7 @@ import java.util.List;
 @ManagedBean(name = "User")
 @SessionScoped
 public class UserBean {
-
+    private int userId;
     private String email;
     private String username;
     private String password;
@@ -27,38 +27,17 @@ public class UserBean {
     private String lastname;
     private String country;
     private String city;
-    private List<User> browse;
-    private User user;
-    private int getUserId;
-
-
-    public List<User> getBrowse() {
-        System.out.println("UserBean: KIL");
-        return UserHandler.browse();
-    }
-
-    public void setBrowse(List<User> browse) {
-        this.browse = browse;
-    }
 
     public UserBean() {
         super();
     }
 
-    public void register() {
-        boolean registerSuccess = UserHandler.registerUser(email, username, password, firstname, lastname, country, city);
+    public int getUserId() {
+        return userId;
+    }
 
-        if (registerSuccess) {
-            try {
-                ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-                ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
-            } catch (IOException e) {
-                System.out.println("failed redirecting");
-                e.printStackTrace();
-            }
-        } else {
-            // TODO: Assign variable if registration failed. (http://stackoverflow.com/questions/15452539/redirecting-form-jsf-managed-bean-and-showing-js-alert-based-on-condition-in-man)
-        }
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
@@ -117,19 +96,19 @@ public class UserBean {
         this.city = city;
     }
 
-    public User getUser() {
-        return UserHandler.getUser(getUserId);
-    }
+    public void register() {
+        boolean registerSuccess = UserHandler.registerUser(email, username, password, firstname, lastname, country, city);
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public int getGetUserId() {
-        return getUserId;
-    }
-
-    public void setGetUserId(int getUserId) {
-        this.getUserId = getUserId;
+        if (registerSuccess) {
+            try {
+                ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+                ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+            } catch (IOException e) {
+                System.out.println("failed redirecting");
+                e.printStackTrace();
+            }
+        } else {
+            // TODO: Assign variable if registration failed. (http://stackoverflow.com/questions/15452539/redirecting-form-jsf-managed-bean-and-showing-js-alert-based-on-condition-in-man)
+        }
     }
 }

@@ -4,26 +4,24 @@ import BusinessLogic.UserHandler;
 import Entity.User;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Created by Peonsson on 13/11/15.
  */
-
-@ManagedBean(name="UserProfile")
+@ManagedBean(name = "UserProfile")
 public class UserProfileBean {
-
-//    private UserViewModel userProfile;
-
-    private int userId;
     private String username;
     private String firstname;
     private String lastname;
     private String country;
     private String city;
 
-    public String getProfile() {
-        System.out.println("user id = " + userId);
-        User user = UserHandler.getUser(userId);
+    public String getProfile(int id) {
+        System.out.println("ASD123");
+        System.out.println("user id = " + id);
+        User user = UserHandler.getUser(id);
+
 
         System.out.println(user.getUsername());
 
@@ -34,14 +32,6 @@ public class UserProfileBean {
         this.city = user.getCity();
 
         return "profile.xhtml";
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getUsername() {

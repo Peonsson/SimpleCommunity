@@ -20,9 +20,7 @@
         <h:column>#{user.city}</h:column>
         <h:column>
             <h:form>
-                <p:commandButton value="View profile" action="#{UserProfile.getProfile}">
-                    <f:param name="userId" value="#{user.userId}"/>
-                </p:commandButton>
+                <p:commandButton value="View profile" action="#{UserProfile.getProfile(user.userId)}" />
             </h:form>
         </h:column>
     </h:dataTable>

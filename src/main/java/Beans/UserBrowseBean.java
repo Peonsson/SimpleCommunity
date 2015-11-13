@@ -20,5 +20,4 @@ public class UserBrowseBean {
     public List<User> getUsers() {
         return User.browse();
     }
-
 }

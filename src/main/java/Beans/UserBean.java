@@ -9,6 +9,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * Created by robin on 9/11/15.
  */
 @ManagedBean(name = "User")
-@RequestScoped
+@SessionScoped
 public class UserBean {
 
     private String email;
@@ -57,22 +58,6 @@ public class UserBean {
             }
         } else {
             // TODO: Assign variable if registration failed. (http://stackoverflow.com/questions/15452539/redirecting-form-jsf-managed-bean-and-showing-js-alert-based-on-condition-in-man)
-        }
-    }
-
-    public void login() {
-        boolean loginSuccess = UserHandler.loginUser(username, password);
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-
-        try {
-            if (loginSuccess) {
-                ec.redirect(ec.getRequestContextPath() + "/timeline.xhtml");
-            } else {
-                ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
-            }
-        } catch (IOException e) {
-            System.out.println("failed redirecting");
-            e.printStackTrace();
         }
     }
 

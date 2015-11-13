@@ -12,14 +12,14 @@
 
     <h:form>
         <h:outputLabel>Username</h:outputLabel>
-        <h:inputText id="username" value="#{User.username}"></h:inputText>
+        <h:inputText id="username" value="#{Login.username}"></h:inputText>
         <br/>
 
         <h:outputLabel>Password</h:outputLabel>
-        <h:inputSecret id="password" value="#{User.password}"></h:inputSecret>
+        <h:inputSecret id="password" value="#{Login.password}"></h:inputSecret>
         <br/>
 
-        <h:commandButton id="submit" action="#{User.login}" value="Login"></h:commandButton>
+        <h:commandButton id="submit" action="#{Login.login}" value="Login"></h:commandButton>
     </h:form>
 
 </f:view>

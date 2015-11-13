@@ -4,7 +4,6 @@ import BusinessLogic.UserHandler;
 import Entity.User;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 /**
  * Created by Peonsson on 13/11/15.
@@ -21,7 +20,6 @@ public class UserProfileBean {
         System.out.println("ASD123");
         System.out.println("user id = " + id);
         User user = UserHandler.getUser(id);
-
 
         System.out.println(user.getUsername());
 

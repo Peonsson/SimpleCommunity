@@ -1,5 +1,6 @@
 package Beans;
 
+import BusinessLogic.UserHandler;
 import Entity.User;
 
 import javax.faces.bean.ManagedBean;
@@ -13,11 +14,16 @@ public class UserBrowseBean {
 
     private List<User> users;
 
-    public UserBrowseBean() {
-        super();
+    public List<User> getUsers() {
+        return users;
     }
 
-    public List<User> getUsers() {
-        return User.browse();
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public String initBrowse() {
+            users = UserHandler.browse();
+        return "browse.xhtml";
     }
 }

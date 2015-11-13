@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class UserDB {
     public static boolean registerUser(User user) {
+        System.out.println("UserDB: registerUser");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
         EntityManager em = emf.createEntityManager();
 
@@ -31,7 +32,7 @@ public class UserDB {
     }
 
     public static User loginUser(String username, String password) {
-        System.out.println("UserDB: GOT HERE");
+        System.out.println("UserDB: GOT loginUser");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
         EntityManager em = emf.createEntityManager();
 
@@ -56,7 +57,7 @@ public class UserDB {
     }
 
     public static List<User> browse() {
-        System.out.println("UserDB: GOT HERE");
+        System.out.println("UserDB: GOT browse");
         List<User> users = new ArrayList<User>();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
         EntityManager em = emf.createEntityManager();
@@ -81,6 +82,8 @@ public class UserDB {
     }
 
     public static User getUser(int id) {
+        System.out.println("UserDB: GOT getUser");
+
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
         EntityManager em = emf.createEntityManager();
 

@@ -13,7 +13,9 @@
             <h:form>
                 <h:commandButton value="Logout" action="#{Login.logout}"/>
                 <p:button value="Timeline" outcome="timeline"/>
-                <p:button value="Browse members" outcome="browse"/>
+                <h:form>
+                    <p:commandButton value="Browse" action="#{UserBrowse.initBrowse}"/>
+                </h:form>
             </h:form>
         </c:when>
         <c:otherwise>

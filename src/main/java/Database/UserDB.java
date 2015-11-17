@@ -13,17 +13,20 @@ import java.util.List;
  * Created by robin on 11/11/15.
  */
 public class UserDB {
+
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
+
     public static boolean registerUser(User user) {
         System.out.println("UserDB: registerUser");
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
+
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
         EntityManager em = emf.createEntityManager();
 
         try {
             em.getTransaction().begin();
             em.persist(user);
             em.getTransaction().commit();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             em.close();
             return false;
         }
@@ -33,7 +36,7 @@ public class UserDB {
 
     public static User loginUser(String username, String password) {
         System.out.println("UserDB: GOT loginUser");
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
         EntityManager em = emf.createEntityManager();
 
         User user;
@@ -42,7 +45,7 @@ public class UserDB {
             Query query = em.createQuery("from User where username = :username");
             query.setParameter("username", username);
             List list = query.getResultList();
-            user = (User)list.get(0);
+            user = (User) list.get(0);
 
 //            System.out.println("UserDB user: " + user.getUsername());
 //            System.out.println("UserDB pass: " + user.getPassword());
@@ -59,7 +62,8 @@ public class UserDB {
     public static List<User> browse() {
         System.out.println("UserDB: GOT browse");
         List<User> users = new ArrayList<User>();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
+
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -84,17 +88,20 @@ public class UserDB {
     public static User getUser(int id) {
         System.out.println("UserDB: GOT getUser");
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SimpleCommunity");
         EntityManager em = emf.createEntityManager();
 
-        User user = null;
-
+        User user;
         try {
+
             Query query = em.createQuery("from User where userId = :id");
             query.setParameter("id", id);
-            user = (User) query.getSingleResult();
-        } catch(Exception e) {
+            List list = query.getResultList();
+            user = (User) list.get(0);
+            System.out.println(user.toString());
+        } catch (Exception e) {
             System.err.println(e.getMessage());
+            return null;
         } finally {
             em.close();
         }

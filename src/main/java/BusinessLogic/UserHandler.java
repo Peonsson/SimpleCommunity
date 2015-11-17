@@ -1,11 +1,7 @@
 package BusinessLogic;
 
 import Entity.User;
-import org.hibernate.annotations.SourceType;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 
 /**
@@ -20,7 +16,7 @@ public class UserHandler {
         return User.register(usr);
     }
 
-    public static boolean loginUser(String username, String password) {
+    public static int loginUser(String username, String password) {
         System.out.println("Usr handler: username = " + username + "\npassword = " + password);
 
         return User.login(username, password);

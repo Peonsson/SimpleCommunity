@@ -7,13 +7,30 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <ui:include src="menu.xhtml"></ui:include>
+    <h:outputText value="Timeline"></h:outputText> <br/>
     <h:form>
-        <h:inputText id="subject" value="#{Log.subject}"></h:inputText>
-        <h:inputText id="message" value="#{Log.message}"></h:inputText>
-        <h:commandButton value="Submit" action="#{Log.submit}"></h:commandButton>
+        <h:outputLabel id="subjectLabel" value="Subject: "/>
+        <h:inputText id="subject" value="#{Log.subject}"></h:inputText><br/>
+
+        <h:outputLabel id="messageLabel" value="Message: "/>
+        <h:inputText id="message" value="#{Log.message}"></h:inputText><br/>
+        <h:commandButton value="Submit" action="#{Log.submit}"></h:commandButton> <br/><br/>
     </h:form>
 
-    <h:outputText value="timeline"></h:outputText>
 
+    <h:dataTable value="#{Log.logs}" var="item">
+        <h:column>
+            <f:facet name="header">Subject</f:facet>
+            <h:outputText value="#{item.subject}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Message</f:facet>
+            <h:outputText value="#{item.message}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Timestamp</f:facet>
+            <h:outputText value="#{item.timestamp}" />
+        </h:column>
+    </h:dataTable>
 </f:view>
 </html>

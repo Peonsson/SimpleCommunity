@@ -106,6 +106,10 @@ public class User {
         this.city = city;
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -170,17 +174,17 @@ public class User {
         return UserDB.registerUser(user);
     }
 
-    public static boolean login(String username, String password) {
+    public static int login(String username, String password) {
         User user = UserDB.loginUser(username, password);
 
         if (user != null) {
             if (user.username.equals(username) && user.password.equals(password)) {
                 System.out.println("User: have successfully logged in!");
-                return true;
+                return user.getUserId();
             }
         }
         System.err.println("User: login failed.");
-        return false;
+        return -1;
     }
 
     public static List<User> browse() {

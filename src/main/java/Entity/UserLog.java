@@ -1,11 +1,14 @@
 package Entity;
 
+import Beans.SessionBean;
 import Database.LogDB;
+import Database.UserDB;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Peonsson and roppe546.
@@ -94,7 +97,21 @@ public class UserLog {
         this.message = message;
     }
 
-//    public static boolean submit(UserLog log) {
-//        return LogDB.submit(log);
-//    }
+    public static boolean submit(int userId, String subject, String message) {
+        User user = UserDB.getUser(userId);
+        if(user != null) {
+            System.out.println(user.toString());
+        } else {
+            System.err.println("USER IS NULL!");
+        }
+        UserLog log = new UserLog(user, subject, message);
+        return LogDB.submit(log);
+    }
+
+    public static List<UserLog> fetchLogs() {
+        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
+        User user = UserDB.getUser(userId);
+        System.out.println("THIS IS WHAT WE WANT PLZ:\n" + user.toString());
+        return LogDB.fetchLogs(user);
+    }
 }

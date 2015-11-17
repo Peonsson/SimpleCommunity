@@ -12,18 +12,36 @@
     <ui:include src="menu.xhtml"></ui:include>
 
     <h:dataTable value="#{UserBrowse.users}" var="user">
-        <h:column>#{user.userId}</h:column>
-        <h:column>#{user.username}</h:column>
-        <h:column>#{user.firstname}</h:column>
-        <h:column>#{user.lastname}</h:column>
-        <h:column>#{user.country}</h:column>
-        <h:column>#{user.city}</h:column>
+
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            <h:outputText value="#{user.userId}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Username</f:facet>
+            <h:outputText value="#{user.username}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">First name</f:facet>
+            <h:outputText value="#{user.firstname}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Last name</f:facet>
+            <h:outputText value="#{user.lastname}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Country</f:facet>
+            <h:outputText value="#{user.country}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">City</f:facet>
+            <h:outputText value="#{user.city}" />
+        </h:column>
         <h:column>
             <h:form>
                 <p:commandButton value="View profile" action="#{UserProfile.getProfile(user.userId)}" />
             </h:form>
         </h:column>
     </h:dataTable>
-
 </f:view>
 </html>

@@ -4,10 +4,7 @@ import BusinessLogic.UserHandler;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 /**
  * Created by robin on 13/11/15.
@@ -22,7 +19,6 @@ public class LoginBean {
     public LoginBean() {
         super();
         loggedIn = false;
-
     }
 
     public String getUsername() {
@@ -64,12 +60,14 @@ public class LoginBean {
     }
 
     public String login() {
-        boolean loginSuccess = UserHandler.loginUser(username, password);
+        int userId = UserHandler.loginUser(username, password);
 
-        if (loginSuccess) {
+        if (userId > -1) {
             setLoggedIn(true);
 
             HttpSession session = SessionBean.getSession();
+
+            session.setAttribute("userId", userId);
             session.setAttribute("username", username);
 
             return "timeline.xhtml";

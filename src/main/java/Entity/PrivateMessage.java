@@ -121,4 +121,17 @@ public class PrivateMessage {
     public void setRead(boolean read) {
         isRead = read;
     }
+
+    @Override
+    public String toString() {
+        return "PrivateMessage{" +
+                "privateMessageId=" + privateMessageId +
+                ", sender=" + sender +
+                ", receiver=" + receiver +
+                ", timestamp=" + timestamp +
+                ", subject='" + subject + '\'' +
+                ", message='" + message + '\'' +
+                ", isRead=" + isRead +
+                '}';
+    }
 }

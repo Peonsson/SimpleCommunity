@@ -7,11 +7,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <ui:include src="menu.xhtml"></ui:include>
+    <h:outputText value="Profile" style="color: royalblue"/> <br/>
 
-    <h:outputText value="#{UserProfile.username}"/>
-    <h:outputText value="#{UserProfile.firstname}"/>
-    <h:outputText value="#{UserProfile.lastname}"/>
-    <h:outputText value="#{UserProfile.country}"/>
+    <h:outputLabel value="Username: "/>
+    <h:outputText value="#{UserProfile.username}"/> <br/>
+
+    <h:outputLabel value="First name: "/>
+    <h:outputText value="#{UserProfile.firstname}"/> <br/>
+    <h:outputText value="#{UserProfile.lastname}"/> <br/>
+    <h:outputText value="#{UserProfile.country}"/> <br/>
     <h:outputText value="#{UserProfile.city}"/>
 
 </f:view>

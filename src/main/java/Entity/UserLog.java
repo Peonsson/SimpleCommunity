@@ -114,4 +114,15 @@ public class UserLog {
         System.out.println("THIS IS WHAT WE WANT PLZ:\n" + user.toString());
         return LogDB.fetchLogs(user);
     }
+
+    @Override
+    public String toString() {
+        return "UserLog{" +
+                "userLogId=" + userLogId +
+                ", user=" + user +
+                ", timestamp=" + timestamp +
+                ", subject='" + subject + '\'' +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

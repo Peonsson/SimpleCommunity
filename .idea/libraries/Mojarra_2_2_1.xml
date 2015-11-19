@@ -6,8 +6,6 @@
       <root url="jar://$PROJECT_DIR$/lib/javax.faces-2.2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.ideaLibSources/javax.faces-2.2.1-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

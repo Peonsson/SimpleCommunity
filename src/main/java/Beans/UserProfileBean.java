@@ -16,6 +16,7 @@ import java.util.List;
 @SessionScoped
 public class UserProfileBean {
 
+    private String id;
     private String username;
     private String firstname;
     private String lastname;
@@ -23,11 +24,12 @@ public class UserProfileBean {
     private String city;
     private List<UserLog> logs;
 
-    public String getProfile(int id) {
+    public String getProfile(String id) {
 
+        this.id = id;
         System.out.println("ASD123");
         System.out.println("user id = " + id);
-        User user = UserHandler.getUser(id);
+        User user = UserHandler.getUser(Integer.parseInt(id));
 
         System.out.println(user.getUsername());
 
@@ -37,9 +39,17 @@ public class UserProfileBean {
         this.country = user.getCountry();
         this.city = user.getCity();
 
-        logs = LogHandler.fetchLogs(id);
+        logs = LogHandler.fetchLogs(Integer.parseInt(id));
 
         return "profile.xhtml";
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {

@@ -134,4 +134,8 @@ public class PrivateMessage {
                 ", isRead=" + isRead +
                 '}';
     }
+
+    public static void submit() {
+
+    }
 }

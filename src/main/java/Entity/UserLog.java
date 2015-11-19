@@ -115,6 +115,12 @@ public class UserLog {
         return LogDB.fetchLogs(user);
     }
 
+    public static List<UserLog> fetchLogs(int id) {
+        User user = UserDB.getUser(id);
+        System.out.println("THIS IS WHAT WE WANT PLZ:\n" + user.toString());
+        return LogDB.fetchLogs(user);
+    }
+
     @Override
     public String toString() {
         return "UserLog{" +

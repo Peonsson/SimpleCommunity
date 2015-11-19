@@ -35,6 +35,8 @@ public class LogDB {
 
     public static List<UserLog> fetchLogs(User user) {
 
+        System.out.println("LogDB: user id = " + user.getUserId());
+
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createQuery("from UserLog where user = :user");

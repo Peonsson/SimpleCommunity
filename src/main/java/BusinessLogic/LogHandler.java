@@ -17,4 +17,9 @@ public class LogHandler {
     public static List<UserLog> fetchLogs() {
         return UserLog.fetchLogs();
     }
+
+    public static List<UserLog> fetchLogs(int id) {
+        System.out.println("LogHandler: id : " + id);
+        return UserLog.fetchLogs(id);
+    }
 }

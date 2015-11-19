@@ -1,10 +1,13 @@
 package Beans;
 
+import BusinessLogic.LogHandler;
 import BusinessLogic.UserHandler;
 import Entity.User;
+import Entity.UserLog;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.List;
 
 /**
  * Created by Peonsson on 13/11/15.
@@ -18,6 +21,7 @@ public class UserProfileBean {
     private String lastname;
     private String country;
     private String city;
+    private List<UserLog> logs;
 
     public String getProfile(int id) {
 
@@ -32,6 +36,8 @@ public class UserProfileBean {
         this.lastname = user.getLastname();
         this.country = user.getCountry();
         this.city = user.getCity();
+
+        logs = LogHandler.fetchLogs(id);
 
         return "profile.xhtml";
     }
@@ -74,5 +80,13 @@ public class UserProfileBean {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<UserLog> getLogs() {
+        return logs;
+    }
+
+    public void setLogs(List<UserLog> logs) {
+        this.logs = logs;
     }
 }

@@ -17,15 +17,11 @@ public class UserBrowseBean {
     private List<User> users;
 
     public List<User> getUsers() {
+        users = UserHandler.browse();
         return users;
     }
 
     public void setUsers(List<User> users) {
         this.users = users;
-    }
-
-    public String initBrowse() {
-            users = UserHandler.browse();
-        return "browse.xhtml";
     }
 }

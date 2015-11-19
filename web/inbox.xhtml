@@ -9,6 +9,24 @@
     <ui:include src="menu.xhtml"></ui:include>
     <h:outputText value="Inbox" style="color: royalblue"/> <br/>
 
-    <h:outputLabel value="Hello, inbox"/>
+    <h:dataTable value="#{ReadPrivateMessage.messages}" var="item">
+        <h:column>
+            <f:facet name="header">Sender</f:facet>
+            <h:outputText value="#{item.sender.username}"></h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Subject</f:facet>
+            <h:outputText value="#{item.subject}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Message</f:facet>
+            <h:outputText value="#{item.message}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Timestamp</f:facet>
+            <h:outputText value="#{item.timestamp}" />
+        </h:column>
+    </h:dataTable>
+
 </f:view>
 </html>

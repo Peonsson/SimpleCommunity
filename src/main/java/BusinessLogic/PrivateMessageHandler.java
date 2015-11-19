@@ -2,6 +2,8 @@ package BusinessLogic;
 
 import Entity.PrivateMessage;
 
+import java.util.List;
+
 /**
  * Created by Peonsson on 19/11/15.
  */
@@ -14,4 +16,7 @@ public class PrivateMessageHandler {
         PrivateMessage.submit(senderId, receiverId, subject, password);
     }
 
+    public static List<PrivateMessage> fetchPrivateMessages() {
+        return PrivateMessage.fetchPrivateMessages();
+    }
 }

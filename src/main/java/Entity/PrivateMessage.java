@@ -1,5 +1,6 @@
 package Entity;
 
+import Beans.SessionBean;
 import Database.PrivateMessageDB;
 import Database.UserDB;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Peonsson and roppe546.
@@ -153,5 +155,13 @@ public class PrivateMessage {
         else {
             System.out.println("SENDER OR RECEIVER NULL");
         }
+    }
+
+
+
+    public static List<PrivateMessage> fetchPrivateMessages() {
+        int userId = (Integer) SessionBean.getSession().getAttribute("userId");
+        User user = UserDB.getUser(userId);
+        return PrivateMessageDB.fetchPrivateMessages(user);
     }
 }

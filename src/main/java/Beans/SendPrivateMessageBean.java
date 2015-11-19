@@ -21,7 +21,7 @@ public class SendPrivateMessageBean {
     public SendPrivateMessageBean() {
     }
 
-    public String submit(String receiver, String sender) {
+    public String submit(String sender, String receiver) {
 
         System.out.println("SendPrivateMessageBean.. submit.. receiver: " + receiver);
         System.out.println("SendPrivateMessageBean.. submit.. sender: " + sender);

@@ -20,9 +20,6 @@
         <h:inputText id="message" value="#{SendPrivateMessage.message}"/><br/>
 
         <h:commandButton id="submit" action="#{SendPrivateMessage.submit(session.getAttribute('userId'), UserProfile.id)}" value="Submit"/>
-            <!--<f:param name="action" value="#{session.getAttribute('userId')}"/>-->
-            <!--<f:param name="action" value="#{UserProfile.id}"/>-->
-        <!--</h:commandButton>-->
     </h:form>
 </f:view>
 </html>

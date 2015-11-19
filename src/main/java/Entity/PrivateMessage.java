@@ -1,5 +1,8 @@
 package Entity;
 
+import Database.PrivateMessageDB;
+import Database.UserDB;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -135,7 +138,20 @@ public class PrivateMessage {
                 '}';
     }
 
-    public static void submit() {
+    public static void submit(int senderId, int receiverId, String subject, String message) {
+        User sender = UserDB.getUser(senderId);
+        User receiver = UserDB.getUser(receiverId);
 
+        if (sender != null && receiver != null) {
+            System.out.println("PrivateMessage: Sender: " + sender.toString());
+            System.out.println("PrivateMessage: Receiver: " + receiver.toString());
+
+            PrivateMessage pm = new PrivateMessage(sender, receiver, subject, message);
+
+            PrivateMessageDB.submit(pm);
+        }
+        else {
+            System.out.println("SENDER OR RECEIVER NULL");
+        }
     }
 }

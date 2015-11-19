@@ -1,5 +1,7 @@
 package Beans;
 
+import BusinessLogic.PrivateMessageHandler;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -25,6 +27,8 @@ public class SendPrivateMessageBean {
         System.out.println("SendPrivateMessageBean.. submit.. sender: " + sender);
         System.out.println("SendPrivateMessageBean.. submit.. subject: " + subject);
         System.out.println("SendPrivateMessageBean.. submit.. message: " + message);
+
+        PrivateMessageHandler.submit(sender, receiver, subject, message);
 
         return "profile.xhtml";
     }

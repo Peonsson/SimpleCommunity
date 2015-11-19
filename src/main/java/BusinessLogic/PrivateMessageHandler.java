@@ -7,8 +7,11 @@ import Entity.PrivateMessage;
  */
 public class PrivateMessageHandler {
 
-    public static void submit() {
-        PrivateMessage.submit();
+    public static void submit(String sender, String receiver, String subject, String password) {
+        int senderId = Integer.parseInt(sender);
+        int receiverId = Integer.parseInt(receiver);
+
+        PrivateMessage.submit(senderId, receiverId, subject, password);
     }
 
 }

@@ -1,5 +1,6 @@
 package Entity;
 
+import Beans.SessionBean;
 import Database.UserDB;
 
 import javax.persistence.*;
@@ -207,5 +208,13 @@ public class User {
 
     public static User getUser(int id) {
         return UserDB.getUser(id);
+    }
+
+    public static void addFriend() {
+        int userId = (Integer)SessionBean.getSession().getAttribute("userId");
+        User myself = User.getUser(userId);
+//        User friend = User.getUser(friendId);
+//        myself.getFriends(friend);
+
     }
 }

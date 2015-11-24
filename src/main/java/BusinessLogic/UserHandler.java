@@ -29,4 +29,8 @@ public class UserHandler {
     public static User getUser(int id) {
         return User.getUser(id);
     }
+
+    public static void addFriend() {
+        User.addFriend();
+    }
 }

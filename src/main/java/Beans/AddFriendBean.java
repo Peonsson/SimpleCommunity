@@ -8,24 +8,14 @@ import javax.faces.bean.SessionScoped;
 /**
  * Created by Peonsson on 19/11/15.
  */
-@ManagedBean
+@ManagedBean(name="AddFriend")
 @SessionScoped
 public class AddFriendBean {
-
-    private String friendId;
 
     public AddFriendBean() {
     }
 
-    public void addFriend() {
-        UserHandler.addFriend();
-    }
-
-    public String getFriendId() {
-        return friendId;
-    }
-
-    public void setFriendId(String friendId) {
-        this.friendId = friendId;
+    public void addFriend(String userToAddAsFriend) {
+        UserHandler.addFriend(Integer.parseInt(userToAddAsFriend));
     }
 }

@@ -210,9 +210,15 @@ public class User {
         return UserDB.getUser(id);
     }
 
-    public static void addFriend() {
+    public static void addFriend(int userToAddAsFriend) {
         int userId = (Integer)SessionBean.getSession().getAttribute("userId");
         User myself = User.getUser(userId);
+        User otherUser = User.getUser(userToAddAsFriend);
+
+        System.out.println("Myself id : " + myself.getUserId());
+        System.out.println("Member to add as friend : " + userToAddAsFriend);
+
+        UserDB.addFriend(myself, otherUser);
 //        User friend = User.getUser(friendId);
 //        myself.getFriends(friend);
 

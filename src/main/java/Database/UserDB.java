@@ -125,7 +125,7 @@ public class UserDB {
             for (User current : friends) {
                 System.out.println("USerDB: otherUser : " + otherUser.toString());
                 System.out.println("UserDB: current User: " + current.toString());
-                if (current.equals(otherUser)) {
+                if (current.getUserId() == otherUser.getUserId()) {
                     // If user already exists in list, don't add again
                     return;
                 }

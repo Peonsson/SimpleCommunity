@@ -30,7 +30,7 @@ public class UserHandler {
         return User.getUser(id);
     }
 
-    public static void addFriend() {
-        User.addFriend();
+    public static void addFriend(int userToAddAsFriend) {
+        User.addFriend(userToAddAsFriend);
     }
 }

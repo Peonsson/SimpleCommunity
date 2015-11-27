@@ -97,6 +97,9 @@ public class UserDB {
             Query query = em.createQuery("from User where userId = :id");
             query.setParameter("id", id);
             List list = query.getResultList();
+
+
+
             user = (User) list.get(0);
             System.out.println(user.toString());
         } catch (Exception e) {
@@ -106,5 +109,39 @@ public class UserDB {
             em.close();
         }
         return user;
+    }
+
+    public static void addFriend(User user, User otherUser) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            Query query = em.createQuery("from User where userId = :id");
+            query.setParameter("id", user.getUserId());
+            User thisUser = (User) query.getResultList().get(0);
+
+            List<User> friends = thisUser.getFriends();
+            System.out.println("UserDB: friends: " + friends.toString());
+
+            for (User current : friends) {
+                System.out.println("USerDB: otherUser : " + otherUser.toString());
+                System.out.println("UserDB: current User: " + current.toString());
+                if (current.getUserId() == otherUser.getUserId()) {
+                    // If user already exists in list, don't add again
+                    return;
+                }
+            }
+
+            friends.add(otherUser);
+
+            em.getTransaction().begin();
+            em.persist(thisUser);
+            em.getTransaction().commit();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            em.close();
+        }
     }
 }

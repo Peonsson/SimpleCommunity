@@ -103,6 +103,7 @@ public class UserLog {
             System.out.println(user.toString());
         } else {
             System.err.println("USER IS NULL!");
+            return false;
         }
         UserLog log = new UserLog(user, subject, message);
         return LogDB.submit(log);
